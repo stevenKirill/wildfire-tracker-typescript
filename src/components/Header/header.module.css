@@ -1,0 +1,21 @@
+.header {
+    font-size: 20px;
+    padding: 10px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.item {
+    margin-left: 10px;
+    text-decoration: none;
+}
+.item a {
+    text-decoration: none;
+}
+.active {
+    border-bottom: 1px solid rgb(101, 101, 201);
+}
+a:hover {
+    color: brown;
+}
