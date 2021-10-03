@@ -3,7 +3,6 @@ import GoogleMapReact from 'google-map-react';
 import { GOOGLE_MAPS_KEY } from '../../api/keys'
 import { IEvent } from '../../interfaces/appInterfaces';
 import LocationMarker from '../LocationMarker/LocationMarker';
-import LocationInfo from '../LocationInfo/LocationInfo';
 
 interface IProps {
     center?: {
@@ -14,17 +13,9 @@ interface IProps {
     events: IEvent[]
 };
 
-interface IInfo {
-    id: string;
-    title: string;
-}
-
 const NATURAL_EVENT_WILDFIRE: number = 8;
 
 const GoogleMap: React.FC<IProps> = ({ center, zoom, events = [] }) => {
-    const [info,setInfo] = useState<IInfo | null>(null);
-
-    console.log(info,'=>> info')
 
     const renderMarkers = events.map((ev,idx) => {
         const { categories } = ev;
@@ -33,8 +24,8 @@ const GoogleMap: React.FC<IProps> = ({ center, zoom, events = [] }) => {
                 <LocationMarker 
                     lat={ev.geometries[0].coordinates[1]}
                     lng={ev.geometries[0].coordinates[0]}
+                    title={ev.title}
                     key={idx}
-                    onClick={() => setInfo({ id: ev.id, title: ev.title})}
                 />
             )
         };
@@ -48,7 +39,6 @@ const GoogleMap: React.FC<IProps> = ({ center, zoom, events = [] }) => {
             >
                 {renderMarkers}
             </GoogleMapReact>
-            {info && <LocationInfo/>}
         </div>
     );
 };

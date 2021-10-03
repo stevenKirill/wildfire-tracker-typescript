@@ -16,8 +16,6 @@ const MapPage: React.FC = () => {
         };
     });
 
-    console.log(loading, error, fireEvents,'=> data')
-
     useEffect(() => {
         dispatch(fetchData());
     },[]);

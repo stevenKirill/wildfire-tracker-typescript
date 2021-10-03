@@ -1,17 +1,20 @@
 import React from 'react';
 import LocalFireDepartmentIcon from '@mui/icons-material/LocalFireDepartment';
 import classes from './locationmarker.module.css';
+import Tooltip from '@mui/material/Tooltip';
 
 interface IProps {
     lat: number;
     lng: number;
-    onClick: () => void
+    title: string;
 }
 
-const LocationMarker: React.FC<IProps> = ({ lat, lng, onClick }) => {
+const LocationMarker: React.FC<IProps> = ({ lat, lng, title }) => {
     return (
-        <div onClick={onClick} className={classes.marker}>
-            <LocalFireDepartmentIcon color="error"/>
+        <div className={classes.marker}>
+            <Tooltip title={title}>
+                <LocalFireDepartmentIcon color="error"/>
+            </Tooltip>
         </div>
     )
 }
